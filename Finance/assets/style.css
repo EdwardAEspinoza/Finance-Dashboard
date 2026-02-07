@@ -1,0 +1,128 @@
+body {
+    background-color: #0f172a; /* dark slate */
+    color: #e5e7eb;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+
+hr {
+    border-top: 1px solid #334155;
+}
+
+
+.dropdown-container > div {
+    background-color: #1e293b;
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+
+.dropdown-button {
+    width: 100%;
+    margin-top: 5px;
+}
+
+.tabs-group {
+    padding-top: 20px;
+}
+
+.app-div {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+.data-table-div {
+    margin: auto;
+    padding: 10px;
+}
+
+.budget-label {
+    font-size: 20px;
+    font-weight: bold;
+    color: #38bdf8;
+}
+
+.budget-text {
+    font-size: 20px;
+}
+
+.budget-text-value,
+.checklist {
+    color: #94a3b8;
+}
+
+
+.budget-progress-bar {
+    height: 20px;
+}
+
+.budget-tooltip {
+    font-size: 18px;
+}
+
+.checklist {
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+/* --- Summary Cards --- */
+.summary-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.summary-card {
+    background-color: #1e293b;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+.summary-card h6 {
+    margin-bottom: 10px;
+    color: #38bdf8; /* accent */
+    font-weight: 600;
+}
+
+.summary-value {
+    font-size: 20px;
+    font-weight: bold;
+    color: #e5e7eb;
+}
+
+/* --- Charts Row --- */
+.charts-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Bar chart wider */
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.chart-container {
+    padding: 10px;
+    background-color: #1e293b;
+    border-radius: 10px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+}
+
+/* --- Responsive Adjustments --- */
+@media(max-width: 992px) {
+    .charts-row {
+        grid-template-columns: 1fr;
+    }
+    .summary-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media(max-width: 800px) {
+    .dropdown-container {
+        grid-template-columns: 1fr;
+    }
+}
