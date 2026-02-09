@@ -1,6 +1,4 @@
-import pandas as pd
 from dash import Dash, html
-
 from src.components import (
     bar_chart,
     category_dropdown,
@@ -11,14 +9,14 @@ from src.components import (
 )
 
 
-def create_layout(app: Dash, data: pd.DataFrame) -> html.Div:
+def create_layout(app: Dash, data):
     return html.Div(
         className="app-div",
         children=[
             html.H1(app.title, style={"textAlign": "center", "marginBottom": "20px"}),
             html.Hr(),
 
-            # ✅ Reactive summary cards
+            # Reactive summary cards
             summary_cards.render(app, data),
 
             # Filters

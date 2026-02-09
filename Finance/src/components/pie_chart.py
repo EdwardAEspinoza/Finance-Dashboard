@@ -17,6 +17,9 @@ COLOR_SEQUENCE = ["#38bdf8", "#22c55e", "#f97316", "#e11d48", "#a855f7"]
 
 
 def render(app: Dash, data: pd.DataFrame) -> html.Div:
+    # Ensure month is integer
+    data[DataSchema.MONTH] = data[DataSchema.MONTH].astype(int)
+
     @app.callback(
         Output(ids.PIE_CHART, "children"),
         [
@@ -25,13 +28,16 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
             Input(ids.CATEGORY_DROPDOWN, "value"),
         ],
     )
-    def update_pie_chart(
-        years: list[str], months: list[str], categories: list[str]
-    ) -> html.Div:
+    def update_pie_chart(years, months, categories):
+        start_month, end_month = months
 
-        filtered_data = data.query(
-            "year in @years and month in @months and category in @categories"
+        # Boolean mask filtering
+        mask = (
+            data[DataSchema.YEAR].isin(years)
+            & data[DataSchema.MONTH].between(start_month, end_month)
+            & data[DataSchema.CATEGORY].isin(categories)
         )
+        filtered_data = data[mask]
 
         if filtered_data.empty:
             return html.Div("No data selected.", id=ids.PIE_CHART)
