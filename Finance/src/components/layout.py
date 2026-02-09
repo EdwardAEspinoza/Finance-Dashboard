@@ -1,54 +1,25 @@
 import pandas as pd
 from dash import Dash, html
+
 from src.components import (
     bar_chart,
     category_dropdown,
     month_dropdown,
     pie_chart,
     year_dropdown,
+    summary_cards,
 )
 
 
 def create_layout(app: Dash, data: pd.DataFrame) -> html.Div:
-    # Calculate summary stats
-    total_spent = data['amount'].sum()
-    top_category = data.groupby('category')['amount'].sum().idxmax()
-    average_monthly = data.groupby('month')['amount'].sum().mean()
-
-    # Layout
     return html.Div(
         className="app-div",
         children=[
             html.H1(app.title, style={"textAlign": "center", "marginBottom": "20px"}),
             html.Hr(),
 
-            # Summary cards
-            html.Div(
-                className="summary-cards",
-                children=[
-                    html.Div(
-                        className="summary-card",
-                        children=[
-                            html.H6("Total Spent"),
-                            html.P(f"${total_spent:,.2f}", className="summary-value"),
-                        ],
-                    ),
-                    html.Div(
-                        className="summary-card",
-                        children=[
-                            html.H6("Top Category"),
-                            html.P(f"{top_category}", className="summary-value"),
-                        ],
-                    ),
-                    html.Div(
-                        className="summary-card",
-                        children=[
-                            html.H6("Average Monthly"),
-                            html.P(f"${average_monthly:,.2f}", className="summary-value"),
-                        ],
-                    ),
-                ],
-            ),
+            # ✅ Reactive summary cards
+            summary_cards.render(app, data),
 
             # Filters
             html.Div(

@@ -9,3 +9,5 @@ MONTH_DROPDOWN = "month-dropdown"
 
 YEAR_DROPDOWN = "year-dropdown"
 SELECT_ALL_YEARS_BUTTON = "select-all-years-button"
+
+SUMMARY_CARDS = "summary-cards"

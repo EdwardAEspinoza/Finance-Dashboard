@@ -126,3 +126,19 @@ hr {
         grid-template-columns: 1fr;
     }
 }
+
+.app-header {
+    margin-bottom: 30px;
+}
+
+.app-header h2 {
+    margin: 0;
+    font-size: 28px;
+    color: #e5e7eb;
+}
+
+.app-header p {
+    margin: 5px 0 0;
+    color: #94a3b8;
+    font-size: 14px;
+}
