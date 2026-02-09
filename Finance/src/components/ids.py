@@ -12,3 +12,7 @@ YEAR_DROPDOWN = "year-dropdown"
 SELECT_ALL_YEARS_BUTTON = "select-all-years-button"
 
 SUMMARY_CARDS = "summary-cards"
+TOP_CATEGORIES_PIE = "top-categories-pie"
+LINE_CHART = "line-chart"
+STACKED_BAR_CHART = "stacked-bar-chart"
+

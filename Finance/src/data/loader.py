@@ -6,6 +6,7 @@ class DataSchema:
     DATE = "date"
     MONTH = "month"
     YEAR = "year"
+    TYPE = "type"
 
 
 def load_transaction_data(path: str) -> pd.DataFrame:
@@ -34,5 +35,6 @@ def load_transaction_data(path: str) -> pd.DataFrame:
     # Create year and month columns as strings
     data[DataSchema.YEAR] = data[DataSchema.DATE].dt.year.astype(str)
     data[DataSchema.MONTH] = data[DataSchema.DATE].dt.month.astype(str)
+    data[DataSchema.TYPE] = "Expense"
 
     return data
