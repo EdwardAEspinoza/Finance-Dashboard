@@ -9,14 +9,23 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
     unique_months = sorted(set(all_months))
 
     MONTH_NAMES = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
-    marks = {m: MONTH_NAMES[m-1] for m in unique_months}
 
     @app.callback(
+        Output(ids.MONTH_DROPDOWN, "min"),
+        Output(ids.MONTH_DROPDOWN, "max"),
+        Output(ids.MONTH_DROPDOWN, "marks"),
         Output(ids.MONTH_DROPDOWN, "value"),
-        Input(ids.SELECT_ALL_MONTHS_BUTTON, "n_clicks"),
+        Input(ids.DATA_STORE, "data")
     )
-    def select_all_months(_: int) -> list[int]:
-        return [min(unique_months), max(unique_months)]  # ✅ return only two numbers
+    def update_month_options(stored_data):
+        if not stored_data:
+            return 1, 12, {}, [1, 12]
+        df = pd.DataFrame(stored_data)
+        months = sorted(set(df[DataSchema.MONTH].astype(int)))
+        marks = {m: MONTH_NAMES[m-1] for m in months}
+        return min(months), max(months), marks, [min(months), max(months)]
+
+    marks = {m: MONTH_NAMES[m-1] for m in unique_months}
 
     return html.Div(
         children=[
@@ -26,16 +35,10 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
                 min=min(unique_months),
                 max=max(unique_months),
                 step=1,
-                value=[min(unique_months), max(unique_months)],  # ✅ must be two numbers
+                value=[min(unique_months), max(unique_months)],
                 marks=marks,
                 tooltip={"placement": "bottom", "always_visible": True},
                 allowCross=False,
-            ),
-            html.Button(
-                className="dropdown-button",
-                children=["Select All"],
-                id=ids.SELECT_ALL_MONTHS_BUTTON,
-                n_clicks=0,
             ),
         ]
     )

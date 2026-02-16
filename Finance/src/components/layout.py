@@ -11,8 +11,7 @@ from src.components import (
     category_dropdown,
 )
 
-
-def create_layout(app: Dash, data):
+def create_layout(app: Dash) -> html.Div:
     return html.Div(
         className="app-div",
         children=[
@@ -20,15 +19,15 @@ def create_layout(app: Dash, data):
             html.Hr(),
 
             # Summary cards
-            summary_cards.render(app, data),
+            summary_cards.render(app),
 
             # Filters
             html.Div(
                 className="dropdown-container",
                 children=[
-                    year_dropdown.render(app, data),
-                    month_dropdown.render(app, data),
-                    category_dropdown.render(app, data),
+                    year_dropdown.render(app),
+                    month_dropdown.render(app),
+                    category_dropdown.render(app),
                 ],
             ),
 
@@ -36,8 +35,8 @@ def create_layout(app: Dash, data):
             html.Div(
                 className="charts-row",
                 children=[
-                    html.Div(bar_chart.render(app, data), className="chart-container"),
-                    html.Div(pie_chart.render(app, data), className="chart-container"),
+                    html.Div(bar_chart.render(app), className="chart-container"),
+                    html.Div(pie_chart.render(app), className="chart-container"),
                 ],
             ),
 
@@ -45,8 +44,8 @@ def create_layout(app: Dash, data):
             html.Div(
                 className="charts-row",
                 children=[
-                    html.Div(line_chart.render(app, data), className="chart-container"),
-                    html.Div(stacked_bar_chart.render(app, data), className="chart-container"),
+                    html.Div(line_chart.render(app), className="chart-container"),
+                    html.Div(stacked_bar_chart.render(app), className="chart-container"),
                 ],
             ),
 
@@ -54,7 +53,7 @@ def create_layout(app: Dash, data):
             html.Div(
                 className="charts-row",
                 children=[
-                    html.Div(top_categories_pie.render(app, data), className="chart-container"),
+                    html.Div(top_categories_pie.render(app), className="chart-container"),
                 ],
             ),
         ],

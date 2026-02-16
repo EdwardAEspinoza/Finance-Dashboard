@@ -15,4 +15,7 @@ SUMMARY_CARDS = "summary-cards"
 TOP_CATEGORIES_PIE = "top-categories-pie"
 LINE_CHART = "line-chart"
 STACKED_BAR_CHART = "stacked-bar-chart"
+UPLOAD_COMPONENT = "upload-data"
+DATA_STORE = "stored-data"
+UPLOAD_STATUS = "upload-status"
 
