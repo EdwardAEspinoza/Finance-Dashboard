@@ -26,7 +26,7 @@ app.title = "Finance Dashboard"
 app.layout = html.Div(
     className="dashboard-container",
     children=[
-        html.H2("📊 Personal Finance Dashboard"),
+        html.H2("Personal Finance Dashboard"),
 
         # -------- CSV Upload --------
         dcc.Upload(
